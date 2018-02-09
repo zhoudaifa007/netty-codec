@@ -1,6 +1,4 @@
-package lengthfield;
-
-import java.util.Random;
+package lengthfieldstring;
 
 /**
  * Created by zhoudf2 on 2018-2-9.
@@ -23,7 +21,7 @@ public class NettyTestMain {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-           // nettyClient.close();
+            nettyClient.close();
         }
 
         Thread.sleep(5000);

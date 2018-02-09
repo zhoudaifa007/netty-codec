@@ -1,4 +1,4 @@
-package lengthfield;
+package lengthfieldstring;
 
 import com.alibaba.fastjson.JSONObject;
 import io.netty.channel.Channel;

@@ -1,8 +1,5 @@
-package failure.client;
+package lengthfieldpojo.client;
 
-import failure.common.LuckHeader;
-import failure.common.LuckMessage;
-import failure.server.NettyLuckInitializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -10,6 +7,9 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import lengthfieldpojo.common.LuckHeader;
+import lengthfieldpojo.common.LuckMessage;
+import lengthfieldpojo.server.NettyLuckInitializer;
 
 import java.util.UUID;
 
@@ -28,7 +28,7 @@ public class LuckClient {
                     .handler(new NettyLuckInitializer());
 
             // Start the connection attempt.
-            Channel ch = b.connect("10.133.143.108", 8888).sync().channel();
+            Channel ch = b.connect("127.0.0.1", 8888).sync().channel();
 
             int version = 1;
             String sessionId = UUID.randomUUID().toString();

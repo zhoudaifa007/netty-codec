@@ -23,6 +23,7 @@ public class SocketClient {
                     .handler(new SocketClientInitializer());
 
             ChannelFuture channelFuture = bootstrap.connect("localhost", 8899).sync();
+            System.out.println("连接已经建立1");
             channelFuture.channel().closeFuture().sync();
         }
         finally {

@@ -5,6 +5,8 @@ import failure.common.LuckMessage;
 import failure.server.NettyLuckInitializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -34,7 +36,19 @@ public class LuckClient {
 
             LuckHeader header = new LuckHeader(version, content.length(), sessionId);
             LuckMessage message = new LuckMessage(header, content);
-            ch.writeAndFlush(message);
+
+
+            for(int i = 0; i < 1000; i++) {
+                ch.writeAndFlush(message).addListener(new ChannelFutureListener() {
+                    public void operationComplete(ChannelFuture future) throws Exception {
+                        if (future.isSuccess()) {
+                            System.out.println("发送成功");
+                        }
+                    }
+                });
+                System.out.println("sended " + i);
+            }
+
             System.out.println("关闭通道！！");
 
             ch.close();

@@ -15,6 +15,7 @@ public class SocketClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("连接已经建立2");
         UnpooledByteBufAllocator allocator = new UnpooledByteBufAllocator(false);
         ByteBuf buffer = allocator.buffer(20);
         buffer.writeInt(8);
@@ -22,5 +23,6 @@ public class SocketClientHandler extends ChannelInboundHandlerAdapter {
         buffer.writeBytes("body".getBytes());
 
         ctx.writeAndFlush(buffer);
+        System.out.println("数据已经发送完成");
     }
 }

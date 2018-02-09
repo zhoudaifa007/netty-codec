@@ -13,6 +13,8 @@ public class LuckDecoder extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+
+        System.out.println(ctx.channel().toString());
         //少于44个字节，不读取
         if (in.readableBytes() < (4 + 4 + 36)) {
             return;

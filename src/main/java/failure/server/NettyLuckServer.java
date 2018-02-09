@@ -29,7 +29,8 @@ public class NettyLuckServer {
             serverBootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)  // 指定是一个NIO连接通道
                     .handler(new LoggingHandler(LogLevel.INFO))
-                    .childHandler(new NettyLuckInitializer());
+                    .childHandler(new NettyLuckInitializer())
+                    .childOption(ChannelOption.TCP_NODELAY, true);
 
             // 绑定对应的端口号,并启动开始监听端口上的连接
             Channel ch = serverBootstrap.bind(PORT).sync().channel();
@@ -37,10 +38,10 @@ public class NettyLuckServer {
             System.out.printf("luck协议启动地址：127.0.0.1:%d/\n", PORT);
 
             // 等待关闭,同步端口
-            ch.closeFuture().sync();
+//            ch.closeFuture().sync();
         } finally {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
+//            bossGroup.shutdownGracefully();
+//            workerGroup.shutdownGracefully();
         }
     }
 }

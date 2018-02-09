@@ -13,5 +13,11 @@ public class NettyLuckHandler extends SimpleChannelInboundHandler<LuckMessage> {
         // 简单地打印出server接收到的消息
         System.out.println(msg.toString());
     }
+
+//    @Override
+//    public void channelReadComplete(ChannelHandlerContext ctx) {
+//        System.out.println("channelReadComplete");
+//       // ctx.flush();
+//    }
 }
 

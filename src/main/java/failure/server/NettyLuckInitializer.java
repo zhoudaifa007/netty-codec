@@ -1,7 +1,7 @@
-package client;
+package failure.server;
 
-import common.LuckDecoder;
-import common.LuckEncoder;
+import failure.common.LuckDecoder;
+import failure.common.LuckEncoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -9,7 +9,7 @@ import io.netty.channel.socket.SocketChannel;
 /**
  * Created by Daifa on 2018/2/8.
  */
-public class LuckClientInitializer extends ChannelInitializer<SocketChannel> {
+public class NettyLuckInitializer extends ChannelInitializer<SocketChannel> {
 
     private static final LuckEncoder ENCODER = new LuckEncoder();
 
@@ -23,8 +23,8 @@ public class LuckClientInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(ENCODER);
         pipeline.addLast(new LuckDecoder());
 
-        // and then business logic.
-        pipeline.addLast(new LuckClientHandler());
+        // 添加逻辑控制层
+        pipeline.addLast(new NettyLuckHandler());
 
     }
 }

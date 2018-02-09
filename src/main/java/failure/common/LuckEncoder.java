@@ -1,4 +1,4 @@
-package common;
+package failure.common;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;

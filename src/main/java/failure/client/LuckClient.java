@@ -1,8 +1,8 @@
-package client;
+package failure.client;
 
-import common.LuckHeader;
-import common.LuckMessage;
-import server.NettyLuckInitializer;
+import failure.common.LuckHeader;
+import failure.common.LuckMessage;
+import failure.server.NettyLuckInitializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
@@ -35,6 +35,7 @@ public class LuckClient {
             LuckHeader header = new LuckHeader(version, content.length(), sessionId);
             LuckMessage message = new LuckMessage(header, content);
             ch.writeAndFlush(message);
+            System.out.println("关闭通道！！");
 
             ch.close();
 

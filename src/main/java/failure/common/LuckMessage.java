@@ -1,6 +1,4 @@
-package common;
-
-import common.LuckHeader;
+package failure.common;
 
 /**
  * Created by Daifa on 2018/2/8.

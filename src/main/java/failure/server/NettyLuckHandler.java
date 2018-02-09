@@ -1,6 +1,6 @@
-package server;
+package failure.server;
 
-import common.LuckMessage;
+import failure.common.LuckMessage;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
